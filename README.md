@@ -28,6 +28,8 @@
             background-color: var(--primary-white);
             color: var(--primary-black);
             line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
         
         .container {
@@ -43,6 +45,12 @@
             padding: 15px 0;
             position: relative;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            animation: headerSlide 0.8s ease-out;
+        }
+        
+        @keyframes headerSlide {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
         }
         
         .header-content {
@@ -69,6 +77,12 @@
             color: var(--primary-white);
             font-size: 24px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            animation: logoSpin 10s linear infinite;
+        }
+        
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .header-text {
@@ -90,6 +104,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
         }
         
         .options-btn:hover {
@@ -97,6 +118,7 @@
             color: var(--accent-color);
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: none;
         }
         
         /* Navigation Bar */
@@ -142,12 +164,17 @@
         .drug-header {
             text-align: center;
             padding: 40px 0 20px;
-            border-bottom: 2px solid var(--border-gray);
             margin-bottom: 30px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(245,245,245,0.7));
             border-radius: 10px;
             margin-top: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f1f3f5 100%);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         
         .drug-name {
@@ -156,6 +183,13 @@
             letter-spacing: 1px;
             color: var(--accent-color);
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: colorShift 6s infinite alternate;
+        }
+        
+        @keyframes colorShift {
+            0% { color: var(--accent-color); }
+            50% { color: #2980b9; }
+            100% { color: var(--accent-color); }
         }
         
         .pronunciation {
@@ -172,6 +206,12 @@
             margin: 30px 0;
             border: 1px solid var(--border-gray);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            0% { transform: translateX(-100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
         }
         
         .formula-container {
@@ -197,12 +237,17 @@
             color: var(--dark-gray);
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #2c3e50, #4a6491);
+            position: relative;
         }
         
-        .formula-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .formula-image::before {
+            content: "C17H14ClN4";
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
         
         section {
@@ -213,7 +258,29 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
             border-left: 4px solid var(--accent-color);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: sectionAppear 0.8s forwards;
         }
+        
+        @keyframes sectionAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        section:nth-child(1) { animation-delay: 0.1s; }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.3s; }
+        section:nth-child(4) { animation-delay: 0.4s; }
+        section:nth-child(5) { animation-delay: 0.5s; }
+        section:nth-child(6) { animation-delay: 0.6s; }
+        section:nth-child(7) { animation-delay: 0.7s; }
+        section:nth-child(8) { animation-delay: 0.8s; }
+        section:nth-child(9) { animation-delay: 0.9s; }
+        section:nth-child(10) { animation-delay: 1.0s; }
+        section:nth-child(11) { animation-delay: 1.1s; }
         
         section:hover {
             transform: translateY(-5px);
@@ -247,6 +314,13 @@
             margin: 20px 0;
             font-size: 17px;
             border-radius: 4px;
+            animation: highlightPulse 3s infinite;
+        }
+        
+        @keyframes highlightPulse {
+            0% { box-shadow: 0 0 0 0 rgba(44,62,80,0.2); }
+            70% { box-shadow: 0 0 0 10px rgba(44,62,80,0); }
+            100% { box-shadow: 0 0 0 0 rgba(44,62,80,0); }
         }
         
         ul {
@@ -257,7 +331,28 @@
             margin-bottom: 8px;
             font-size: 17px;
             position: relative;
+            animation: listItemAppear 0.5s forwards;
+            opacity: 0;
+            transform: translateX(-20px);
         }
+        
+        @keyframes listItemAppear {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        li:nth-child(1) { animation-delay: 0.1s; }
+        li:nth-child(2) { animation-delay: 0.2s; }
+        li:nth-child(3) { animation-delay: 0.3s; }
+        li:nth-child(4) { animation-delay: 0.4s; }
+        li:nth-child(5) { animation-delay: 0.5s; }
+        li:nth-child(6) { animation-delay: 0.6s; }
+        li:nth-child(7) { animation-delay: 0.7s; }
+        li:nth-child(8) { animation-delay: 0.8s; }
+        li:nth-child(9) { animation-delay: 0.9s; }
+        li:nth-child(10) { animation-delay: 1.0s; }
         
         li:before {
             content: "•";
@@ -274,6 +369,12 @@
             margin: 30px 0;
             border: 1px solid var(--border-gray);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: slideInRight 0.8s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            0% { transform: translateX(100px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
         }
         
         .dosing-grid {
@@ -289,6 +390,12 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
             border-top: 3px solid var(--accent-color);
+            animation: cardAppear 0.6s ease-out;
+        }
+        
+        @keyframes cardAppear {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
         
         .dosing-card:hover {
@@ -312,6 +419,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             border-radius: 8px;
             overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
         }
         
         th, td {
@@ -330,23 +438,50 @@
             background-color: #f9f9f9;
         }
         
-        .interaction-image {
-            width: 100%;
-            height: 300px;
-            margin: 20px 0;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        tr {
+            animation: rowAppear 0.5s forwards;
+            opacity: 0;
+            transform: translateY(10px);
         }
         
-        .interaction-image img {
+        @keyframes rowAppear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        tr:nth-child(1) { animation-delay: 0.1s; }
+        tr:nth-child(2) { animation-delay: 0.2s; }
+        tr:nth-child(3) { animation-delay: 0.3s; }
+        tr:nth-child(4) { animation-delay: 0.4s; }
+        tr:nth-child(5) { animation-delay: 0.5s; }
+        tr:nth-child(6) { animation-delay: 0.6s; }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            animation: videoAppear 1s ease-out;
+        }
+        
+        @keyframes videoAppear {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 8px;
+            border: none;
         }
         
         .references {
@@ -355,6 +490,7 @@
             border-radius: 8px;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            animation: fadeIn 1s ease-out;
         }
         
         .references ol {
@@ -384,6 +520,12 @@
             padding: 30px 0;
             margin-top: 50px;
             border-top: 4px solid #3498db;
+            animation: footerAppear 0.8s ease-out;
+        }
+        
+        @keyframes footerAppear {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
         
         .footer-content {
@@ -469,9 +611,7 @@
                     <p><strong>Chemical Name:</strong> 8-Chloro-1-methyl-6-phenyl-4H-s-triazolo [4,3-α] [1,4] benzodiazepine</p>
                     <p><strong>Molecular Formula:</strong> C<sub>17</sub>H<sub>14</sub>ClN<sub>4</sub></p>
                 </div>
-                <div class="formula-image">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Alprazolam.svg/800px-Alprazolam.svg.png" alt="Alprazolam Chemical Structure">
-                </div>
+                <div class="formula-image"></div>
             </div>
         </div>
         
@@ -486,9 +626,11 @@
         <section id="mechanism">
             <h2>Mechanism of Action</h2>
             <p>Alprazolam exerts its therapeutic effects by binding to specific sites on GABA<sub>A</sub> receptors, enhancing the affinity of GABA for its receptor. This binding increases the frequency of chloride channel opening, resulting in hyperpolarization of neurons and reduced neuronal excitability.</p>
-            <div class="interaction-image">
-                <img src="https://ars.els-cdn.com/content/image/3-s2.0-B9780128181260000384-f03-01-9780128181260.jpg" alt="Benzodiazepine Mechanism of Action">
+            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/lcjISUSwNyk?si=ofnhW1Pc5AjFO2YK" title="Alprazolam Mechanism of Action" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
+            
             <p class="highlight">By potentiating GABAergic neurotransmission, alprazolam produces CNS depression that manifests as anxiolysis, sedation, muscle relaxation, and anticonvulsant effects.</p>
         </section>
         
@@ -499,9 +641,6 @@
                 <li><strong>Panic Disorder:</strong> Treatment with or without agoraphobia</li>
                 <li><strong>Adjunctive Therapy:</strong> For anxiety associated with depression</li>
             </ul>
-            <div class="interaction-image">
-                <img src="https://www.researchgate.net/publication/345964850/figure/fig1/AS:973775999033346@1608891980574/Generalized-anxiety-disorder-GAD-and-panic-disorder-PD-are-two-common-anxiety.png" alt="Anxiety and Panic Disorders">
-            </div>
         </section>
         
         <section id="dosing">
@@ -572,9 +711,6 @@
         
         <section id="pharmacokinetics">
             <h2>Pharmacokinetics</h2>
-            <div class="interaction-image">
-                <img src="https://ars.els-cdn.com/content/image/3-s2.0-B9780323479090000044-f004-001-9780323479090.jpg" alt="Pharmacokinetics Diagram">
-            </div>
             <h3>Pharmacokinetic Parameters of Alprazolam</h3>
             <table>
                 <tr>
@@ -713,9 +849,6 @@
                     <td>↑ Bioavailability → toxicity</td>
                 </tr>
             </table>
-            <div class="interaction-image">
-                <img src="https://www.researchgate.net/publication/341219210/figure/fig2/AS:890221142159362@1589401557171/Cytochrome-P450-enzyme-system-and-common-drug-interactions-involving-CYP-enzymes.png" alt="CYP450 Drug Interactions">
-            </div>
         </section>
         
         <section id="storage">
@@ -802,6 +935,21 @@
                 });
             }
         }
+        
+        // Animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('section, .dosing-card, li, tr').forEach(el => {
+                observer.observe(el);
+            });
+        });
     </script>
 </body>
 </html>
