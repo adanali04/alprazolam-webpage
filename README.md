@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alprazolam Monograph - UMT School of Pharmacy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <style>
         :root {
             --primary-black: #000;
@@ -92,6 +93,12 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
         
+        .header-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
         .options-btn {
             background: transparent;
             color: var(--primary-white);
@@ -119,6 +126,13 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             animation: none;
+        }
+        
+        .translate-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 5px;
+            min-width: 150px;
         }
         
         /* Navigation Bar */
@@ -242,7 +256,7 @@
         }
         
         .formula-image::before {
-            content: "C17H14ClN4";
+            content: "C₁₇H₁₄ClN₄";
             position: absolute;
             font-size: 24px;
             font-weight: bold;
@@ -534,6 +548,16 @@
             gap: 15px;
         }
         
+        .language-notice {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 14px;
+            animation: pulse 3s infinite;
+        }
+        
         @media (max-width: 768px) {
             .dosing-grid {
                 grid-template-columns: 1fr;
@@ -556,6 +580,16 @@
                 width: 90%;
                 text-align: center;
             }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .header-right {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -566,9 +600,12 @@
                 <div class="logo">UMT</div>
                 <div class="header-text">SCHOOL OF PHARMACY</div>
             </div>
-            <button class="options-btn">
-                <i class="fas fa-cog"></i> Options
-            </button>
+            <div class="header-right">
+                <div class="translate-container" id="google_translate_element"></div>
+                <button class="options-btn">
+                    <i class="fas fa-cog"></i> Options
+                </button>
+            </div>
         </div>
     </header>
     
@@ -598,6 +635,10 @@
     </div>
     
     <main class="container">
+        <div class="language-notice">
+            <i class="fas fa-language"></i> This page can be translated to any language using the dropdown at the top right
+        </div>
+        
         <div class="drug-header">
             <h1 class="drug-name">ALPRAZOLAM</h1>
             <div class="pronunciation">(al·pray·zuh·lam)</div>
@@ -934,6 +975,15 @@
                     behavior: 'smooth'
                 });
             }
+        }
+        
+        // Google Translate initialization
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,ur,ar,es,fr,zh-CN',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
         
         // Animation for elements when they come into view
